@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Income Tax Calculator</title>
+    </head>
+    <body>
+        
+        <div id="heading">
+            <header>Income tax Calculator</header>
+        </div>
+        <div class="calculator">
+            <label for="income">Taxable Income:</label>
+            <br>
+            <input type="number" id="income" style="text-align: right;">
+            <div class="buttons">
+                <button id="calculateButton">CALCULATE TAX</button>
+                <br>
+            </div>
+            <label for="calculateTax">Income Tax:</label>
+            <br>
+            <input id="calculateTax" type="text" style="text-align: right;" readonly>
+            <div class="buttons">
+                <button class="clear-btn" id="clearButton">CLEAR</button>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html">
+                <button class="backbuttons">BACK TO MAIN</button>
+            </a>
+            <a href="homepage.html">
+                <button class="backbuttons">ASSIGNMENTS</button>
+            </a> 
+        </div>
+        <script>
+        document.getElementById('calculateButton').addEventListener('click', calculateTax);
+        document.getElementById('clearButton').addEventListener('click', clearFields);
+        
+        function calculateTax() {
+            const inputIncome = parseFloat(document.getElementById("income").value);
+            let incomeTax = "";
+            
+            if (!isNaN(inputIncome)) {
+                if (inputIncome <= 250000) {
+                    incomeTax = "PHP 0";
+                } else if (inputIncome <= 400000) {
+                    incomeTax = "PHP " + ((inputIncome - 250000) * 0.20).toFixed(2);
+                } else if (inputIncome <= 800000) {
+                    incomeTax = "PHP " + ((inputIncome - 400000) * 0.25 + 30000).toFixed(2);
+                } else if (inputIncome <= 2000000) {
+                    incomeTax = "PHP " + ((inputIncome - 800000) * 0.30 + 130000).toFixed(2);
+                } else if (inputIncome <= 8000000) {
+                    incomeTax = "PHP " + ((inputIncome - 2000000) * 0.32 + 490000).toFixed(2);
+                } else {
+                    incomeTax = "PHP " + ((inputIncome - 8000000) * 0.35 + 2410000).toFixed(2);
+                }
+                
+                document.getElementById("calculateTax").value = incomeTax;
+            } else {
+                alert("Please enter a valid income amount.");
+            }
+        }
+        
+        function clearFields() {
+            document.getElementById("income").value = "";
+            document.getElementById("calculateTax").value = "";
+        }
+    </script>
+    </body>
+</html>
