@@ -14,7 +14,7 @@
            <div class="content">
               <i class="fas fa-temperature-low"></i>
               <i class="fas fa-ruler-vertical"></i>            
-             <h3>Unit Conversion</h3>
+             <header id="heading2" data-text="Unit Conversion Calculator">Unit Conversion</header>
            </div>
          </div>
        </a>
@@ -31,7 +31,7 @@
            <div class="content">
               <i class="fas fa-sack-dollar"></i>
               <i class="fas fa-percent"></i>   
-             <h3>Income Tax</h3>
+             <header>Income Tax</header>
            </div>
          </div>
        </a>
@@ -49,7 +49,7 @@
            <div class="content">
               <i class="fas fa-calculator"></i>
               <i class="fas fa-arrow-down-1-9"></i> 
-             <h3>Nth Factorial, Sum, & Average</h3>
+             <header>Nth Factorial, Sum, & Average</header>
            </div>
          </div>
        </a>
@@ -68,7 +68,7 @@
            <div class="content">
               <i class="fas fa-hand-holding-dollar"></i>
               <i class="fas fa-piggy-bank"></i> 
-             <h3>Simple Payroll</h3>
+             <header>Simple Payroll</header>
            </div>
          </div>
        </a>
@@ -85,8 +85,8 @@
 <style>
 
 .container .card .face.face1 .content i,
-.container .card .face.face1 .content h3{
-  animation: glitch 1s linear infinite;
+.container .card .face.face1 .content header{
+  animation: glitch 0.35s linear infinite;
   position: relative;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -105,12 +105,19 @@
 }
 
 .container .card .face.face1 .content i,
-.container .card .face.face1 .content h3{
-  animation: glitch 1s linear infinite;
+.container .card .face.face1 .content header:before,
+.container .card .face.face1 .content i,
+.container .card .face.face1 .content header:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
 }
 
 .container .card .face.face1 .content i,
-.container .card .face.face1 .content h3:before{
+.container .card .face.face1 .content header:before{
   animation: glitchTop 1.5s linear infinite;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -129,7 +136,7 @@
 }
 
 .container .card .face.face1 .content i,
-.container .card .face.face1 .content h3:after{
+.container .card .face.face1 .content header:after{
   animation: glitchBottom 1s linear infinite;
   clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
   -webkit-clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
