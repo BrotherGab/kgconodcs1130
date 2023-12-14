@@ -2,13 +2,81 @@
     <head>
         <title>Nth Factorial, Sum, and Average Calculator</title>
         <style>
+
+            header{
+          animation: glitch 0.35s linear infinite;
+          position: relative;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        @keyframes glitch {
+          2%, 64% {
+            transform: translate(2px, -2px) skew(-5deg);
+          }
+          4%, 60% {
+            transform: translate(-2px, 2px) skew(5deg);
+          }
+          62% {
+            transform: translate(0, 0) skew(0deg);
+          }
+        }
+
+        header:before, header:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        header:before{
+          animation: glitchTop 1.5s linear infinite;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        @keyframes glitchTop {
+          2%,64% {
+            transform: translate(-2px,1px);
+          }
+          4%,60% {
+            transform: translate(-2px,1px);\
+          }
+          62% {
+            transform: translate(13px,-1px) skew(-13deg);
+          }
+        }
+        
+        header:after{
+          animation: glitchBottom 1s linear infinite;
+          clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
+          -webkit-clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
+        }
+        
+        @keyframes glitchBottom {
+          2%,64% {
+            transform: translate(-2px,1px);
+          }
+          4%,60% {
+            transform: translate(-2px,1px);
+          }
+          62% {
+            transform: translate(-22px,5px) skew(21deg);
+          }
+        }
+            
             body {
             font-family: Arial, sans-serif;
             background-color: #444;
             padding: 20px;
             }
 
-            header {
+            #heading {
+            display: block;
+            margin: auto;
+            width: 80%;
             color: whitesmoke;
             font-weight: bold;
             font-size: 60px;
@@ -27,7 +95,7 @@
                0 0 50px #fff,
                -10px 0 80px #f0f,
                10px 0 80px #0ff;
-            }
+        }
             
             .parent-selector {
             display: flex;
@@ -43,7 +111,7 @@
                 margin: 0 auto; /* Add this to center the container horizontally */
             }
             
-            .buttons button{
+            .calculator button{
                 padding: 10px 20px;
                 border: none;
                 background-color: #333;
@@ -55,7 +123,7 @@
                 font-weight: bold;
             }
             
-            .buttons button:hover{
+            .calculator button:hover{
                 background-color: #6c757d;
             }
             
@@ -87,9 +155,11 @@
         </style>
     </head>
     <body>
-    <div id="heading">
-        <header>Nth Factorial, Sum, and Average</header>
-    </div>
+        
+        <div id="heading">
+          <header id="heading2" data-text="Nth Factorial, Sum, and Average">Nth Factorial, Sum, and Average</header>
+        </div>
+        
     <div class="calculator">
         <input type="number" id="numberInput" style="text-align: center" placeholder="Enter an integer">
         <button id="calculateFsa">Calculate</button>
