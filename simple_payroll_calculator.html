@@ -1,0 +1,382 @@
+ <html>
+    <head>
+        <title>Simple Payroll Calculator</title>
+        <style>
+            header{
+              animation: glitch 0.35s linear infinite;
+              position: relative;
+              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+              -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+        
+            @keyframes glitch {
+              2%, 64% {
+                transform: translate(2px, -2px) skew(-5deg);
+              }
+              4%, 60% {
+                transform: translate(-2px, 2px) skew(5deg);
+              }
+              62% {
+                transform: translate(0, 0) skew(0deg);
+              }
+            }
+        
+            header:before{
+              animation: glitchTop 1.5s linear infinite;
+              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+              -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+        
+            @keyframes glitchTop {
+              2%,64% {
+                transform: translate(-2px,1px);
+              }
+              4%,60% {
+                transform: translate(-2px,1px);\
+              }
+              62% {
+                transform: translate(13px,-1px) skew(-13deg);
+              }
+            }
+        
+            header:after{
+              animation: glitchBottom 1s linear infinite;
+              clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
+              -webkit-clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
+            }
+
+            @keyframes glitchBottom {
+              2%,64% {
+                transform: translate(-2px,1px);
+              }
+              4%,60% {
+                transform: translate(-2px,1px);
+              }
+              62% {
+                transform: translate(-22px,5px) skew(21deg);
+              }
+            }
+
+            body{
+                font-family: Arial, sans-serif;
+                background-color: #444;
+                padding: 20px;
+            }
+
+            #heading{
+                color: whitesmoke;
+                font-weight: bold;
+                font-size: 60px;
+                text-align: center;
+                margin-top: 50px;
+                margin-bottom: 20px;
+                border-radius: 50px;
+                font-family: "Lucida Handwriting", cursive;
+                animation: glow 1s ease-in-out infinite alternate;
+                box-shadow:
+                   inset 0 0 60px whitesmoke,
+                   inset 20px 0 80px #f0f,
+                   inset -20px 0 80px #0ff,
+                   inset 20px 0 300px #f0f,
+                  inset -20px 0 300px #0ff,
+                   0 0 50px #fff,
+                   -10px 0 80px #f0f,
+                   10px 0 80px #0ff;
+            }
+            .parent-selector{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; /* This makes the parent take up the full height of the viewport */
+            }
+            h2{
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+                color: black;
+            }
+            .buttons button{
+                padding: 10px 20px;
+                border: none;
+                background-color: #333;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-bottom: 20px;
+            }
+            
+            .buttons button:hover{
+                background-color: #6c757d;
+            }
+            
+            .backbuttons{
+                padding: 10px 20px;
+                border: none;
+                background-color: #333;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+                margin: 0 10px;
+            }
+            
+            .backbuttons:hover{
+                background-color: #6c757d;
+            }
+
+            table {
+                width: 60%;
+                border-collapse: collapse; 
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+            }
+
+            th {
+                background-color: #9a00ce;
+                color: white; 
+                border: 2px solid white; 
+                padding: 5px; 
+                font-size: 17px;
+                text-align: right;
+            }
+
+            th:nth-child(1),
+            td:nth-child(1){
+                width: 4%;
+            }
+            th:nth-child(3),
+            td:nth-child(3) {
+                width: 8%;
+            }
+
+            th:nth-child(2),
+            td:nth-child(2),
+            th:nth-child(4),
+            td:nth-child(4),
+            th:nth-child(5),
+            td:nth-child(5),
+            th:nth-child(6),
+            td:nth-child(6),
+            th:nth-child(7),
+            td:nth-child(7) {
+                width: 17.6%;
+            }
+
+            #payrollBody td {
+                background-color: black;
+                color: white;
+                border: 2px solid white;
+                border: 2px solid white; 
+                padding: 8px; 
+                text-align: right; 
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .modal {
+                font-family: Goat;
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.6);
+            }
+
+            .modal-content {
+                font: 35px;
+                border-radius: 75px;
+                background-color: black; 
+                margin: 15% auto;
+                padding: 15px;
+                border: 4px solid white;
+                width: 25%;
+                text-align: center;
+                color: white; 
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+
+        </style>
+    </head>
+    <body>
+    <div id="heading">
+        <header>Simple Payroll</header>
+    </div>
+
+<div class="container">
+    <div id="h1"><h2>INFORMATION</h2></div>
+
+    <input type="text" id="employeeName" style="text-align: center;" placeholder="Employee name" style="text-align: right" oninput="capitalizeFirstLetter(this)">
+    <p id="employeeNameError" style="color: red; display: none;">Please enter a valid name.</p>
+
+    <input type="number" id="daysWorked" style="text-align: center;" placeholder="Days worked" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <p id="daysWorkedError" style="color: red; display: none;">Please enter a valid number of days worked.</p>
+
+    <input type="number" id="dailyRate" style="text-align: center;" placeholder="Daily rate" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <p id="dailyRateError" style="color: red; display: none;">Please enter a valid daily rate.</p>
+
+    <input type="number" id="deductionAmount" style="text-align: center;" placeholder="Deduction amount" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <p id="deductionAmountError" style="color: red; display: none;">Please enter a valid deduction amount.</p>
+
+    <div class="buttons button">
+    <button onclick="addEmployee()">Add Employee</button>
+    <button onclick="openDeleteEmployeeModal()">Delete Employee</button>
+    <button onclick="openConfirmationModal()">Clear All Employees</button>
+    </div>
+</div>
+
+<table id="payrollTable" border="1">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Employee Name</th>
+                <th>Days Worked</th>
+                <th>Daily Rate</th>
+                <th>Gross Pay</th>
+                <th>Deduction Amount</th>
+                <th>Net Pay</th>
+            </tr>
+        </thead>
+        <tbody id="payrollBody">
+        </tbody>
+    </table>
+
+    <div id="deleteEmployeeModal" class="modal">
+        <div class="modal-content">
+            <p>Enter the number of the Employee</p>
+            <input type="number" id="deleteEmployeeInput" style="text-align: center;" placeholder="Enter line number" dir="rtl">
+            <div class="buttons button">
+                <button onclick="confirmDeleteEmployee()">Delete</button>
+                <button onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h4>Are you sure you want to clear the table?</h4>
+            <div class="buttons button">
+                <button onclick="clearAllEmployees()">Yes</button>
+                <button onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: left; margin-top: 40px; margin-left: 110px;">
+        <a href="homepage.html">
+            <button class="backbuttons">BACK TO MAIN</button>
+        </a> 
+    </div>
+
+<script>
+    function capitalizeFirstLetter(input) {
+        input.value = input.value.charAt(0).toUpperCase() + input.value.slice(1);
+    }
+
+    function validateInput(input) {
+        const value = input.value;
+        const inputId = input.id;
+        const errorId = inputId + "Error";
+        const errorElement = document.getElementById(errorId);
+
+        if (value === '' || isNaN(value) || value <= 0) {
+            errorElement.style.display = 'block';
+        } else {
+            errorElement.style.display = 'none';
+        }
+    }
+    
+        let payrollList = [];
+    
+        function addEmployee() {
+const employeeName = document.getElementById("employeeName").value;
+const daysWorked = parseInt(document.getElementById("daysWorked").value);
+const dailyRate = parseFloat(document.getElementById("dailyRate").value).toFixed(2);
+const deductionAmount = parseFloat(document.getElementById("deductionAmount").value).toFixed(2);
+
+const grossPay = (daysWorked * dailyRate).toFixed(2);
+const netPay = (grossPay - deductionAmount).toFixed(2);
+
+const employee = {
+    employeeName,
+    daysWorked,
+    dailyRate,
+    grossPay,
+    deductionAmount,
+    netPay
+};
+
+document.getElementById("employeeName").value = "";
+document.getElementById("daysWorked").value = "";
+document.getElementById("dailyRate").value = "";
+document.getElementById("deductionAmount").value = "";
+
+payrollList.push(employee);
+displayPayroll();
+}
+    
+        function confirmDeleteEmployee() {
+            const lineNumber = parseInt(document.getElementById("deleteEmployeeInput").value) - 1;
+            if (lineNumber >= 0 && lineNumber < payrollList.length) {
+                payrollList.splice(lineNumber, 1);
+                closeModal();
+                displayPayroll();
+            } else {
+                alert("No employee deleted.");
+            }
+        }
+    
+        function clearAllEmployees() {
+            payrollList = [];
+            displayPayroll();
+            closeModal(); 
+        }
+    
+        function openDeleteEmployeeModal() {
+            const modal = document.getElementById('deleteEmployeeModal');
+            modal.style.display = 'block';
+        }
+    
+        function openConfirmationModal() {
+            const modal = document.getElementById('confirmationModal');
+            modal.style.display = 'block';
+        }
+    
+        function closeModal() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+    
+        function displayPayroll() {
+            const tableBody = document.getElementById("payrollBody");
+            tableBody.innerHTML = "";
+    
+            payrollList.forEach((employee, index) => {
+                const row = tableBody.insertRow();
+                const rowNum = row.insertCell(0);
+                const nameCell = row.insertCell(1);
+                const daysWorkedCell = row.insertCell(2);
+                const dailyRateCell = row.insertCell(3);
+                const grossPayCell = row.insertCell(4);
+                const deductionAmountCell = row.insertCell(5);
+                const netPayCell = row.insertCell(6);
+    
+                rowNum.innerHTML = index + 1;
+                nameCell.innerHTML = employee.employeeName;
+                daysWorkedCell.innerHTML = employee.daysWorked;
+                dailyRateCell.innerHTML = "\u20B1  " + employee.dailyRate;
+                grossPayCell.innerHTML = "\u20B1  " + employee.grossPay;
+                deductionAmountCell.innerHTML = "\u20B1  " + employee.deductionAmount;
+                netPayCell.innerHTML = "\u20B1  " + employee.netPay;
+            });
+        }
+    </script>
+
+    </body>
+</html>
