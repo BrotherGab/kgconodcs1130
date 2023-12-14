@@ -2,7 +2,7 @@
     <head>
         <title>Simple Payroll Calculator</title>
         <style>
-            header{
+            h1{
               animation: glitch 0.35s linear infinite;
               position: relative;
               clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -20,8 +20,17 @@
                 transform: translate(0, 0) skew(0deg);
               }
             }
+
+            h1:before, h1:after {
+              content: attr(data-text);
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
         
-            header:before{
+            h1:before{
               animation: glitchTop 1.5s linear infinite;
               clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
               -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -39,7 +48,7 @@
               }
             }
         
-            header:after{
+            h1:after{
               animation: glitchBottom 1s linear infinite;
               clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
               -webkit-clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
