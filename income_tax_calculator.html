@@ -1,33 +1,170 @@
 <html>
     <head>
         <title>Income Tax Calculator</title>
+        <style>
+        header{
+          animation: glitch 0.35s linear infinite;
+          position: relative;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        @keyframes glitch {
+          2%, 64% {
+            transform: translate(2px, -2px) skew(-5deg);
+          }
+          4%, 60% {
+            transform: translate(-2px, 2px) skew(5deg);
+          }
+          62% {
+            transform: translate(0, 0) skew(0deg);
+          }
+        }
+        
+        header:before{
+          animation: glitchTop 1.5s linear infinite;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        @keyframes glitchTop {
+          2%,64% {
+            transform: translate(-2px,1px);
+          }
+          4%,60% {
+            transform: translate(-2px,1px);\
+          }
+          62% {
+            transform: translate(13px,-1px) skew(-13deg);
+          }
+        }
+        
+        header:after{
+          animation: glitchBottom 1s linear infinite;
+          clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
+          -webkit-clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
+        }
+        
+        @keyframes glitchBottom {
+          2%,64% {
+            transform: translate(-2px,1px);
+          }
+          4%,60% {
+            transform: translate(-2px,1px);
+          }
+          62% {
+            transform: translate(-22px,5px) skew(21deg);
+          }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #444;
+            padding: 20px;
+        }
+        
+        #heading {
+            color: whitesmoke;
+            font-weight: bold;
+            font-size: 60px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-radius: 50px;
+            font-family: "Lucida Handwriting", cursive;
+            animation: glow 1s ease-in-out infinite alternate;
+            box-shadow:
+               inset 0 0 60px whitesmoke,
+               inset 20px 0 80px #f0f,
+               inset -20px 0 80px #0ff,
+               inset 20px 0 300px #f0f,
+               inset -20px 0 300px #0ff,
+               0 0 50px #fff,
+               -10px 0 80px #f0f,
+               10px 0 80px #0ff;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            margin: 0 auto;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+        
+        .calculator label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .calculator input[type="number"],
+        .calculator input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-weight: bold;
+        }
+        
+        .buttons {
+            text-align: center;
+        }
+        
+        .buttons button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .buttons button:hover {
+            background-color: #6c757d;
+        }
+            
+        .backbuttons {
+            padding: 10px 20px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .backbuttons:hover {
+            background-color: #6c757d;
+        }
+        </style>
     </head>
     <body>
         
         <div id="heading">
-            <header>Income tax Calculator</header>
+            <header>Income Tax Calculator</header>
         </div>
         <div class="calculator">
-            <label for="income">Taxable Income:</label>
+            <label for="income" style="text-align: center;">Taxable Income:</label>
             <br>
-            <input type="number" id="income" style="text-align: right;">
+            <input type="number" id="income" style="text-align: center;" placeholder="Enter value">
             <div class="buttons">
                 <button id="calculateButton">CALCULATE TAX</button>
                 <br>
             </div>
-            <label for="calculateTax">Income Tax:</label>
+            <label for="calculateTax" style="text-align: center;">Income Tax:</label>
             <br>
-            <input id="calculateTax" type="text" style="text-align: right;" readonly>
+            <input id="calculateTax" type="text" style="text-align: center;"  readonly placeholder="Calculated value">
             <div class="buttons">
                 <button class="clear-btn" id="clearButton">CLEAR</button>
             </div>
         </div>
         <div style="text-align: center; margin-top: 40px;">
-            <a href="index.html">
-                <button class="backbuttons">BACK TO MAIN</button>
-            </a>
             <a href="homepage.html">
-                <button class="backbuttons">ASSIGNMENTS</button>
+                <button class="backbuttons">BACK TO MAIN</button>
             </a> 
         </div>
         <script>
