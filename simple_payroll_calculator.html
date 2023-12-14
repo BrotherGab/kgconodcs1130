@@ -93,6 +93,7 @@
 
             .container input {
                 display: block;
+                margin-bottom: 5px;
             }
          
             label {
@@ -102,6 +103,7 @@
                 font-size: 16px;
                 font-weight: bold;
                 text-align: left;
+                border-radius: 30px;
             }
          
             h2{
@@ -244,16 +246,20 @@
 <div class="container">
     <div id="h1"><h2>INFORMATION</h2></div>
 
-    <input type="text" id="employeeName" style="text-align: center;" placeholder="Employee name" style="text-align: right" oninput="capitalizeFirstLetter(this)">
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" style="text-align: center;" placeholder="Input Employee Name" style="text-align: right" oninput="capitalizeFirstLetter(this)">
     <p id="employeeNameError" style="color: red; display: none;">Please enter a valid name.</p>
 
-    <input type="number" id="daysWorked" style="text-align: center;" placeholder="Days worked" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <label for="daysWorked">Days Worked:</label>
+    <input type="number" id="daysWorked" style="text-align: center;" placeholder="Input Days Worked" dir="rtl" style="text-align: right" oninput="validateInput(this)">
     <p id="daysWorkedError" style="color: red; display: none;">Please enter a valid number of days worked.</p>
 
-    <input type="number" id="dailyRate" style="text-align: center;" placeholder="Daily rate" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <label for="dailyRate">Daily Rate:</label>
+    <input type="number" id="dailyRate" style="text-align: center;" placeholder="Input Daily Salary Rate" dir="rtl" style="text-align: right" oninput="validateInput(this)">
     <p id="dailyRateError" style="color: red; display: none;">Please enter a valid daily rate.</p>
 
-    <input type="number" id="deductionAmount" style="text-align: center;" placeholder="Deduction amount" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+    <label for="deductionAmount">Deduction Amount:</label>
+    <input type="number" id="deductionAmount" style="text-align: center;" placeholder="Input Deduction Rmount" dir="rtl" style="text-align: right" oninput="validateInput(this)">
     <p id="deductionAmountError" style="color: red; display: none;">Please enter a valid deduction amount.</p>
 
     <div class="buttons button">
@@ -269,7 +275,7 @@
                 <th>No.</th>
                 <th>Employee Name</th>
                 <th>Days Worked</th>
-                <th>Daily Rate</th>
+                <th>Daily Salary Rate</th>
                 <th>Gross Pay</th>
                 <th>Deduction Amount</th>
                 <th>Net Pay</th>
