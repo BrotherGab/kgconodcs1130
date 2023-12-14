@@ -2,27 +2,27 @@
     <head>
         <title>Unit Conversion Calculator</title>
         <style>
-
-            h1{
-              animation: glitch 0.35s linear infinite;
-              position: relative;
-              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-              -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            
+            header{
+                animation: glitch 0.35s linear infinite;
+                position: relative;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             }
         
             @keyframes glitch {
-              2%, 64% {
-                transform: translate(2px, -2px) skew(-5deg);
-              }
-              4%, 60% {
-                transform: translate(-2px, 2px) skew(5deg);
-              }
-              62% {
-                transform: translate(0, 0) skew(0deg);
-              }
+                2%, 64% {
+                    transform: translate(2px, -2px) skew(-5deg);
+                }
+                4%, 60% {
+                    transform: translate(-2px, 2px) skew(5deg);
+                }
+                62% {
+                    transform: translate(0, 0) skew(0deg);
+                }
             }
         
-            h1:before{
+            header:before{
               animation: glitchTop 1.5s linear infinite;
               clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
               -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -40,12 +40,12 @@
               }
             }
         
-            h1:after{
+            header:after{
               animation: glitchBottom 1s linear infinite;
               clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
               -webkit-clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
             }
-
+        
             @keyframes glitchBottom {
               2%,64% {
                 transform: translate(-2px,1px);
@@ -65,13 +65,12 @@
             }
 
             #heading {
-                display: block;
-                margin: auto;
-                width: 70%;
                 color: whitesmoke;
                 font-weight: bold;
                 font-size: 60px;
                 text-align: center;
+                margin-top: 50px;
+                margin-bottom: 20px;
                 border-radius: 50px;
                 font-family: "Lucida Handwriting", cursive;
                 animation: glow 1s ease-in-out infinite alternate;
