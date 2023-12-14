@@ -2,7 +2,7 @@
     <head>
         <title>Income Tax Calculator</title>
         <style>
-        header{
+        h1{
           animation: glitch 0.35s linear infinite;
           position: relative;
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -21,7 +21,7 @@
           }
         }
 
-        header:before, header:after {
+        h1:before, h1:after {
             content: attr(data-text);
             position: absolute;
             top: 0;
@@ -30,7 +30,7 @@
             height: 100%;
         }
         
-        header:before{
+        h1:before{
           animation: glitchTop 1.5s linear infinite;
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -48,7 +48,7 @@
           }
         }
         
-        header:after{
+        h1:after{
           animation: glitchBottom 1s linear infinite;
           clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
           -webkit-clip-path: polygon(0 67, 100% 67%, 100% 100%, 0 100%);
@@ -157,9 +157,9 @@
     </head>
     <body>
         
-        <div id="heading">
-            <header>Income Tax Calculator</header>
-        </div>
+        <br><br><br><br><br><br><br><br><br><br><br>
+            <h1 id="heading" data-text="INCOME TAX CALCULATOR">INCOME TAX CALCULATOR</h1>
+        <br>
         <div class="calculator">
             <label for="income" style="text-align: center;">Taxable Income:</label>
             <br>
