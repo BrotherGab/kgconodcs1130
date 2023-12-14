@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>Nth Factorial, Sum, and Average Calculator</title>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #444;
+            padding: 20px;
+            }
+
+            header {
+            color: whitesmoke;
+            font-weight: bold;
+            font-size: 60px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-radius: 50px;
+            font-family: "Lucida Handwriting", cursive;
+            animation: glow 1s ease-in-out infinite alternate;
+            box-shadow:
+               inset 0 0 60px whitesmoke,
+               inset 20px 0 80px #f0f,
+               inset -20px 0 80px #0ff,
+               inset 20px 0 300px #f0f,
+               inset -20px 0 300px #0ff,
+               0 0 50px #fff,
+               -10px 0 80px #f0f,
+               10px 0 80px #0ff;
+            }
+            .parent-selector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* This makes the parent take up the full height of the viewport */
+            }
+            input{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 auto; /* Add this to center the container horizontally */
+            }
+            button{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 auto; /* Add this to center the container horizontally */
+            }
+
+        </style>
+    </head>
+    <body>
+    <div id="heading">
+        <header>Nth Factorial, Sum, and Average</header>
+    </div>
+    <div class="calculator">
+        <input type="number" id="numberInput" style="text-align: center" placeholder="Enter an integer">
+        <button id="calculateFsa">Calculate</button>
+        <button id="clearButton">Clear</button>
+
+        <div id="output">
+            <p id="factorialResult"></p>
+            <p id="sumResult"></p>
+            <p id="averageResult"></p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="homepage.html">
+            <button class="backbuttons">BACK TO MAIN</button>
+        </a> 
+    </div>
+
+    <script>
+        document.getElementById('calculateFsa').addEventListener('click', calculateFsa);
+        document.getElementById('clearButton').addEventListener('click', clear);
+
+        function calculateFsa() {
+            const number = parseInt(document.getElementById('numberInput').value);
+
+            let factorial = 1;
+            let i = 1;
+            while (i <= number) {
+                factorial *= i;
+                i++;
+            }
+            document.getElementById('factorialResult').innerText = `Factorial: ${factorial}`;
+
+            let sum = 0;
+            let j = 1;
+            do {
+                sum += j;
+                j++;
+            } while (j <= number);
+            document.getElementById('sumResult').innerText = `Sum: ${sum}`;
+
+            let total = 0;
+            for (let k = 1; k <= number; k++) {
+                total += k;
+            }
+            const average = total / number;
+            document.getElementById('averageResult').innerText = `Average: ${average}`;
+        }
+
+        function clear() {
+            document.getElementById('numberInput').value = '';
+            document.getElementById('factorialResult').innerText = '';
+            document.getElementById('sumResult').innerText = '';
+            document.getElementById('averageResult').innerText = '';
+        }
+    </script>
+
+    </body>
+</html>
