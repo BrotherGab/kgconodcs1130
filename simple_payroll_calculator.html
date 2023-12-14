@@ -64,6 +64,8 @@
             }
 
             #heading{
+                display: block;
+                margin: auto;
                 width: 25%;
                 color: whitesmoke;
                 font-weight: bold;
@@ -168,7 +170,7 @@
                 width: 60%;
                 border-collapse: collapse;
                 margin-right: 80px;
-                float: right;
+                float: none;
                 background-color: #e6e0d4;
             }
 
@@ -249,6 +251,12 @@
                 font-family: Arial, Helvetica, sans-serif;
             }
 
+            .flex-container {
+                display: flex;
+                justify-content: space-between; /* This will put some space between the container and the table */
+                align-items: start; /* This will align the top of the container and the table */
+            }
+
 
         </style>
     </head>
@@ -257,47 +265,49 @@
         <header>Simple Payroll</header>
     </div>
 
-<div class="container">
-    <div id="h1"><h2>INFORMATION</h2></div>
+<div class="flex-container">
+  <div class="container">
+      <div id="h1"><h2>INFORMATION</h2></div>
 
-    <label for="employeeName">Employee Name:</label>
-    <input type="text" id="employeeName" style="text-align: center;" placeholder="Input Employee Name" style="text-align: right" oninput="capitalizeFirstLetter(this)">
-    <p id="employeeNameError" style="color: red; display: none;">Please enter a valid name.</p>
+      <label for="employeeName">Employee Name:</label>
+      <input type="text" id="employeeName" style="text-align: center;" placeholder="Input Employee Name" style="text-align: right" oninput="capitalizeFirstLetter(this)">
+      <p id="employeeNameError" style="color: red; display: none;">Please enter a valid name.</p>
 
-    <label for="daysWorked">Days Worked:</label>
-    <input type="number" id="daysWorked" style="text-align: center;" placeholder="Input Days Worked" dir="rtl" style="text-align: right" oninput="validateInput(this)">
-    <p id="daysWorkedError" style="color: red; display: none;">Please enter a valid number of days worked.</p>
+      <label for="daysWorked">Days Worked:</label>
+      <input type="number" id="daysWorked" style="text-align: center;" placeholder="Input Days Worked" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+      <p id="daysWorkedError" style="color: red; display: none;">Please enter a valid number of days worked.</p>
 
-    <label for="dailyRate">Daily Rate:</label>
-    <input type="number" id="dailyRate" style="text-align: center;" placeholder="Input Daily Salary Rate" dir="rtl" style="text-align: right" oninput="validateInput(this)">
-    <p id="dailyRateError" style="color: red; display: none;">Please enter a valid daily rate.</p>
+      <label for="dailyRate">Daily Rate:</label>
+      <input type="number" id="dailyRate" style="text-align: center;" placeholder="Input Daily Salary Rate" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+      <p id="dailyRateError" style="color: red; display: none;">Please enter a valid daily rate.</p>
 
-    <label for="deductionAmount">Deduction Amount:</label>
-    <input type="number" id="deductionAmount" style="text-align: center;" placeholder="Input Deduction Amount" dir="rtl" style="text-align: right" oninput="validateInput(this)">
-    <p id="deductionAmountError" style="color: red; display: none;">Please enter a valid deduction amount.</p>
+      <label for="deductionAmount">Deduction Amount:</label>
+      <input type="number" id="deductionAmount" style="text-align: center;" placeholder="Input Deduction Amount" dir="rtl" style="text-align: right" oninput="validateInput(this)">
+      <p id="deductionAmountError" style="color: red; display: none;">Please enter a valid deduction amount.</p>
 
-    <div class="buttons button">
-    <button onclick="addEmployee()">Add Employee</button>
-    <button onclick="openDeleteEmployeeModal()">Delete Employee</button>
-    <button onclick="openConfirmationModal()">Clear All Employees</button>
-    </div>
+      <div class="buttons button">
+      <button onclick="addEmployee()">Add Employee</button>
+      <button onclick="openDeleteEmployeeModal()">Delete Employee</button>
+      <button onclick="openConfirmationModal()">Clear All Employees</button>
+      </div>
+  </div>
+
+  <table id="payrollTable" border="1">
+          <thead>
+              <tr>
+                  <th>No.</th>
+                  <th>Employee Name</th>
+                  <th>Days Worked</th>
+                  <th>Daily Salary Rate</th>
+                  <th>Gross Pay</th>
+                  <th>Deduction Amount</th>
+                  <th>Net Pay</th>
+              </tr>
+          </thead>
+          <tbody id="payrollBody">
+          </tbody>
+      </table>
 </div>
-
-<table id="payrollTable" border="1">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Employee Name</th>
-                <th>Days Worked</th>
-                <th>Daily Salary Rate</th>
-                <th>Gross Pay</th>
-                <th>Deduction Amount</th>
-                <th>Net Pay</th>
-            </tr>
-        </thead>
-        <tbody id="payrollBody">
-        </tbody>
-    </table>
 
     <div id="deleteEmployeeModal" class="modal">
         <div class="modal-content">
