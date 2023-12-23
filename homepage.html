@@ -327,8 +327,9 @@ body{
   opacity: 1; /* Reveals the content when hovered */
 }
 </style>
-<script src="scripts.js">
-     var lines = document.querySelectorAll('#typewriter .line');
+<script>
+     var typewriter = document.querySelector('.typewriter');
+var lines = typewriter.querySelectorAll('.line');
 var currentLine = 0;
 var speed = 100; // Speed of typing in milliseconds
 
@@ -351,5 +352,7 @@ function typeLine(line) {
   typeCharacter();
 }
 
-typeLine(lines[currentLine]);
+typewriter.addEventListener('mouseover', function() {
+  typeLine(lines[currentLine]);
+});
 </script></body></html>
