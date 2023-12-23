@@ -332,6 +332,7 @@ body{
 var lines = typewriter.querySelectorAll('.line');
 var currentLine = 0;
 var speed = 100; // Speed of typing in milliseconds
+var timeoutId;
 
 function typeLine(line) {
   var text = line.textContent;
@@ -342,7 +343,7 @@ function typeLine(line) {
     if (i < text.length) {
       line.textContent += text.charAt(i);
       i++;
-      setTimeout(typeCharacter, speed);
+      timeoutId = setTimeout(typeCharacter, speed);
     } else if (currentLine < lines.length - 1) {
       currentLine++;
       typeLine(lines[currentLine]);
@@ -354,5 +355,13 @@ function typeLine(line) {
 
 typewriter.addEventListener('mouseover', function() {
   typeLine(lines[currentLine]);
+});
+
+typewriter.addEventListener('mouseout', function() {
+  lines.forEach(function(line) {
+    line.textContent = ''; // Clear the text
+  });
+  clearTimeout(timeoutId); // Stop the typing
+  currentLine = 0; // Reset to the first line
 });
 </script></body></html>
