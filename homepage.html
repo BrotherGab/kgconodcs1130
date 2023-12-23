@@ -316,15 +316,13 @@ window.onload = function() {
     }
   });
 
-  typewriter.addEventListener('mouseout', function() {
-    if (typingFinished) {
-      lines.forEach(function(line) {
-        line.textContent = ''; // Clear the text
-      });
-      clearTimeout(timeoutId); // Stop the typing
-      currentLine = 0; // Reset to the first line
-      typingFinished = false;
-    }
+typewriter.addEventListener('mouseout', function() {
+  lines.forEach(function(line) {
+    line.textContent = ''; // Clear the text
   });
+  clearTimeout(timeoutId); // Stop the typing
+  currentLine = 0; // Reset to the first line
+  typingFinished = false;
+});
 }
 </script></body></html>
