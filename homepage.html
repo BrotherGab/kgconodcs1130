@@ -268,61 +268,6 @@ body{
   color: whitesmoke; 
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
 }
-
-.typewriter {
-  width: 280px; /* Set the width of the container */
-}
-
-.typewriter p {
-  border-right: .15em solid orange;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: .15em;
-}
 </style>
 <script>
-window.onload = function() {
-  var typewriter = document.querySelector('.typewriter');
-  var lines = typewriter.querySelectorAll('p'); // Select all paragraph elements
-  var currentLine = 0;
-  var speed = 100; // Speed of typing in milliseconds
-  var timeoutId;
-  var typingFinished = false;
-
-  function typeLine(line) {
-    var text = line.textContent;
-    var i = 0;
-    line.textContent = '';
-
-    function typeCharacter() {
-      if (i < text.length) {
-        line.textContent += text.charAt(i);
-        i++;
-        timeoutId = setTimeout(typeCharacter, speed);
-      } else if (currentLine < lines.length - 1) {
-        currentLine++;
-        typeLine(lines[currentLine]);
-      } else {
-        typingFinished = true;
-      }
-    }
-
-    typeCharacter();
-  }
-
-  typewriter.addEventListener('mouseover', function() {
-    if (!typingFinished) {
-      typeLine(lines[currentLine]);
-    }
-  });
-
-  typewriter.addEventListener('mouseout', function() {
-    lines.forEach(function(line) {
-      line.textContent = ''; // Clear the text
-    });
-    clearTimeout(timeoutId); // Stop the typing
-    currentLine = 0; // Reset to the first line
-    typingFinished = false;
-  });
-}
 </script></body></html>
