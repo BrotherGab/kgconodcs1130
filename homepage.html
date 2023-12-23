@@ -290,7 +290,8 @@ body{
 }
 
 .typewriter p {
-  overflow: hidden;
+  visibility: hidden; /* Ensures the content is not visible until hovered */
+  opacity: 0; /* Ensures the content is not visible until hovered */
   border-right: .15em solid orange;
   white-space: nowrap;
   margin: 0 auto;
