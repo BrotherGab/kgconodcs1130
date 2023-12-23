@@ -272,8 +272,11 @@ body{
   50% { border-color: transparent; }
 }
 
+.typewriter {
+  width: 280px; /* Set the width of the container */
+}
+
 .typewriter p {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid orange; /* The typewriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
@@ -281,5 +284,13 @@ body{
   animation: 
     typing 3.5s steps(40, end),
     blink-caret .75s step-end infinite;
+}
+
+.typewriter:hover p {
+  overflow: visible; /* Reveals the content when hovered */
+}
+
+.typewriter:not(:hover) p {
+  overflow: hidden; /* Hides the content when not hovered */
 }
 </style><script src="scripts.js"></script></body></html>
