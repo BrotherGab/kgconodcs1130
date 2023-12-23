@@ -326,4 +326,30 @@ body{
   visibility: visible; /* Reveals the content when hovered */
   opacity: 1; /* Reveals the content when hovered */
 }
-</style><script src="scripts.js"></script></body></html>
+</style>
+<script src="scripts.js">
+     var lines = document.querySelectorAll('#typewriter .line');
+var currentLine = 0;
+var speed = 100; // Speed of typing in milliseconds
+
+function typeLine(line) {
+  var text = line.textContent;
+  var i = 0;
+  line.textContent = '';
+
+  function typeCharacter() {
+    if (i < text.length) {
+      line.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeCharacter, speed);
+    } else if (currentLine < lines.length - 1) {
+      currentLine++;
+      typeLine(lines[currentLine]);
+    }
+  }
+
+  typeCharacter();
+}
+
+typeLine(lines[currentLine]);
+</script></body></html>
