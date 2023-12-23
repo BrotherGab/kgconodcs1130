@@ -19,7 +19,7 @@
          </div>
        </a>
        <div class="face face2">
-         <div class="content">
+         <div class="typewriter">
           <p> The Unit Conversion calculator will convert values from one unit to another. </p>
          </div>
        </div>
@@ -36,7 +36,7 @@
          </div>
        </a>
        <div class="face face2">
-         <div class="content">
+         <div class="typewriter">
            <p> The Income Tax calculator calculates the income tax owed based on the user-provided income and relevant tax rules.</p>
          </div>
        </div>
@@ -54,7 +54,7 @@
          </div>
        </a>
        <div class="face face2">
-         <div class="content">
+         <div class="typewriter">
            <p> The Nth factorial, Sum, and Average calculator will perform various operations on natural numbers. </p>
          </div>
        </div>
@@ -73,7 +73,7 @@
          </div>
        </a>
        <div class="face face2">
-         <div class="content">
+         <div class="typewriter">
            <p> The Simple Payroll calculator handles basic payroll calculations based on given input. </p>
          </div>
        </div>
@@ -261,5 +261,25 @@ body{
   background: #333 ;
   color: whitesmoke; 
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+.typewriter p {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typewriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
 }
 </style><script src="scripts.js"></script></body></html>
