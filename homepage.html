@@ -276,63 +276,24 @@ body{
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  50% { border-color: transparent; }
-}
-
-@keyframes fade-in {
-  to { opacity: 1; }
-}
-
 .typewriter {
   width: 280px; /* Set the width of the container */
 }
 
 .typewriter p {
-  visibility: hidden; /* Ensures the content is not visible until hovered */
-  opacity: 0; /* Ensures the content is not visible until hovered */
   border-right: .15em solid orange;
   white-space: nowrap;
   margin: 0 auto;
   letter-spacing: .15em;
 }
-
-.line1 {
-  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite, fade-in 0.5s 3.5s forwards;
-}
-
-.line2 {
-  animation: typing 3.5s steps(40, end) 3.5s, blink-caret .75s step-end infinite 3.5s, fade-in 0.5s 7s forwards;
-}
-
-.line3 {
-  animation: typing 3.5s steps(40, end) 7s, blink-caret .75s step-end infinite 7s, fade-in 0.5s 10.5s forwards;
-}
-
-.line4 {
-  animation: typing 3.5s steps(40, end) 10.5s, blink-caret .75s step-end infinite 10.5s, fade-in 0.5s 14s forwards;
-}
-
-.line5 {
-  animation: typing 3.5s steps(40, end) 14s, blink-caret .75s step-end infinite 14s, fade-in 0.5s 17.5s forwards;
-}
-
-.typewriter:hover p {
-  visibility: visible; /* Reveals the content when hovered */
-  opacity: 1; /* Reveals the content when hovered */
-}
 </style>
 <script>
-     var typewriter = document.querySelector('.typewriter');
+var typewriter = document.querySelector('.typewriter');
 var lines = typewriter.querySelectorAll('.line');
 var currentLine = 0;
 var speed = 100; // Speed of typing in milliseconds
 var timeoutId;
+var typingFinished = false;
 
 function typeLine(line) {
   var text = line.textContent;
@@ -347,6 +308,8 @@ function typeLine(line) {
     } else if (currentLine < lines.length - 1) {
       currentLine++;
       typeLine(lines[currentLine]);
+    } else {
+      typingFinished = true;
     }
   }
 
@@ -354,14 +317,19 @@ function typeLine(line) {
 }
 
 typewriter.addEventListener('mouseover', function() {
-  typeLine(lines[currentLine]);
+  if (!typingFinished) {
+    typeLine(lines[currentLine]);
+  }
 });
 
 typewriter.addEventListener('mouseout', function() {
-  lines.forEach(function(line) {
-    line.textContent = ''; // Clear the text
-  });
-  clearTimeout(timeoutId); // Stop the typing
-  currentLine = 0; // Reset to the first line
+  if (typingFinished) {
+    lines.forEach(function(line) {
+      line.textContent = ''; // Clear the text
+    });
+    clearTimeout(timeoutId); // Stop the typing
+    currentLine = 0; // Reset to the first line
+    typingFinished = false;
+  }
 });
 </script></body></html>
