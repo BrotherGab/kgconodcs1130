@@ -1,8 +1,6 @@
 <html><head>
 <title>Kenn Gabriel's Domain</title>
 
-
-
 </head>
 <body>
      <script src="https://kit.fontawesome.com/92820517fa.js"></script>
@@ -49,7 +47,6 @@
        </div>
     </div>
     
-    
     <div class="card">
        <a href="nth_factorial_sum_average_calculator.html">
          <div class="face face1">
@@ -70,8 +67,6 @@
        </div>
     </div>
 
-
-    
     <div class="card">
        <a href="simple_payroll_calculator.html">
          <div class="face face1">
@@ -92,7 +87,6 @@
        </div>
     </div>
    </div>
-
 
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -209,7 +203,6 @@ body{
     0 0 50px #fff,
     -10px 0 80px #f0f,
     10px 0 80px #0ff;
-   
 }
 
 
@@ -288,48 +281,50 @@ body{
 }
 </style>
 <script>
-var typewriter = document.querySelector('.typewriter');
-var lines = typewriter.querySelectorAll('.line');
-var currentLine = 0;
-var speed = 100; // Speed of typing in milliseconds
-var timeoutId;
-var typingFinished = false;
+window.onload = function() {
+  var typewriter = document.querySelector('.typewriter');
+  var lines = typewriter.querySelectorAll('.line');
+  var currentLine = 0;
+  var speed = 100; // Speed of typing in milliseconds
+  var timeoutId;
+  var typingFinished = false;
 
-function typeLine(line) {
-  var text = line.textContent;
-  var i = 0;
-  line.textContent = '';
+  function typeLine(line) {
+    var text = line.textContent;
+    var i = 0;
+    line.textContent = '';
 
-  function typeCharacter() {
-    if (i < text.length) {
-      line.textContent += text.charAt(i);
-      i++;
-      timeoutId = setTimeout(typeCharacter, speed);
-    } else if (currentLine < lines.length - 1) {
-      currentLine++;
-      typeLine(lines[currentLine]);
-    } else {
-      typingFinished = true;
+    function typeCharacter() {
+      if (i < text.length) {
+        line.textContent += text.charAt(i);
+        i++;
+        timeoutId = setTimeout(typeCharacter, speed);
+      } else if (currentLine < lines.length - 1) {
+        currentLine++;
+        typeLine(lines[currentLine]);
+      } else {
+        typingFinished = true;
+      }
     }
+
+    typeCharacter();
   }
 
-  typeCharacter();
+  typewriter.addEventListener('mouseover', function() {
+    if (!typingFinished) {
+      typeLine(lines[currentLine]);
+    }
+  });
+
+  typewriter.addEventListener('mouseout', function() {
+    if (typingFinished) {
+      lines.forEach(function(line) {
+        line.textContent = ''; // Clear the text
+      });
+      clearTimeout(timeoutId); // Stop the typing
+      currentLine = 0; // Reset to the first line
+      typingFinished = false;
+    }
+  });
 }
-
-typewriter.addEventListener('mouseover', function() {
-  if (!typingFinished) {
-    typeLine(lines[currentLine]);
-  }
-});
-
-typewriter.addEventListener('mouseout', function() {
-  if (typingFinished) {
-    lines.forEach(function(line) {
-      line.textContent = ''; // Clear the text
-    });
-    clearTimeout(timeoutId); // Stop the typing
-    currentLine = 0; // Reset to the first line
-    typingFinished = false;
-  }
-});
 </script></body></html>
