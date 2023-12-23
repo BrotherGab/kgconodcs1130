@@ -283,7 +283,7 @@ body{
 <script>
 window.onload = function() {
   var typewriter = document.querySelector('.typewriter');
-  var lines = typewriter.querySelectorAll('.line');
+  var lines = typewriter.querySelectorAll('p'); // Select all paragraph elements
   var currentLine = 0;
   var speed = 100; // Speed of typing in milliseconds
   var timeoutId;
@@ -316,13 +316,13 @@ window.onload = function() {
     }
   });
 
-typewriter.addEventListener('mouseout', function() {
-  lines.forEach(function(line) {
-    line.textContent = ''; // Clear the text
+  typewriter.addEventListener('mouseout', function() {
+    lines.forEach(function(line) {
+      line.textContent = ''; // Clear the text
+    });
+    clearTimeout(timeoutId); // Stop the typing
+    currentLine = 0; // Reset to the first line
+    typingFinished = false;
   });
-  clearTimeout(timeoutId); // Stop the typing
-  currentLine = 0; // Reset to the first line
-  typingFinished = false;
-});
 }
 </script></body></html>
