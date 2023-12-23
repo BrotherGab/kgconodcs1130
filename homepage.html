@@ -20,7 +20,10 @@
        </a>
        <div class="face face2">
          <div class="typewriter">
-          <p> The Unit Conversion calculator will convert values from one unit to another. </p>
+          <p class="line1"> The Unit Conversion </p>
+          <p class="line2"> calculator will convert </p>
+          <p class="line3"> values from one unit to </p>
+          <p class="line4"> another. </p>
          </div>
        </div>
     </div>
@@ -37,7 +40,11 @@
        </a>
        <div class="face face2">
          <div class="typewriter">
-           <p> The Income Tax calculator calculates the income tax owed based on the user-provided income and relevant tax rules.</p>
+           <p class="line1"> The Income Tax calculator </p>
+           <p class="line2"> calculates the income tax </p>
+           <p class="line3"> owed based on the user- </p>
+           <p class="line4"> provided income and </p>
+           <p class="line5"> relevant tax rules. </p>
          </div>
        </div>
     </div>
@@ -55,7 +62,10 @@
        </a>
        <div class="face face2">
          <div class="typewriter">
-           <p> The Nth factorial, Sum, and Average calculator will perform various operations on natural numbers. </p>
+           <p class="line1"> The Nth factorial, Sum, </p>
+           <p class="line2"> and Average calculator will </p>
+           <p class="line3"> perform various operations </p>
+           <p class="line4"> on natural numbers. </p>
          </div>
        </div>
     </div>
@@ -74,7 +84,10 @@
        </a>
        <div class="face face2">
          <div class="typewriter">
-           <p> The Simple Payroll calculator handles basic payroll calculations based on given input. </p>
+           <p class="line1"> The Simple Payroll </p>
+           <p class="line2"> calculator handles basic </p>
+           <p class="line3"> payroll calculations based </p>
+           <p class="line4"> on given input. </p>
          </div>
        </div>
     </div>
@@ -277,16 +290,31 @@ body{
 }
 
 .typewriter p {
-  visibility: hidden; /* Ensures the content is not visible until hovered */
-  opacity: 0; /* Ensures the content is not visible until hovered */
-  border-right: .15em solid orange; /* The typewriter cursor */
-  white-space: normal; /* Allows the text to wrap to the next line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
-  transition: visibility 0s, opacity 0.5s linear; /* Transition effect */
+  overflow: hidden;
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+}
+
+.line1 {
+  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+.line2 {
+  animation: typing 3.5s steps(40, end) 3.5s, blink-caret .75s step-end infinite 3.5s;
+}
+
+.line3 {
+  animation: typing 3.5s steps(40, end) 7s, blink-caret .75s step-end infinite 7s;
+}
+
+.line4 {
+  animation: typing 3.5s steps(40, end) 10.5s, blink-caret .75s step-end infinite 10.5s;
+}
+
+.line5 {
+  animation: typing 3.5s steps(40, end) 14s, blink-caret .75s step-end infinite 14s;
 }
 
 .typewriter:hover p {
